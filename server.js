@@ -40,6 +40,10 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
+app.use('*', (req,res) => {
+  res.redirect('/graphql')
+})
+
 app.listen(4000, () => {
   console.log('Now browse to localhost:4000/graphql')
 });
