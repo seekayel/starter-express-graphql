@@ -43,3 +43,22 @@ apigw-requestid: bGszoiPiBcwEJuw=
 
 {"data":{"hello":"Hello world!"}}
 ```
+
+### Via Javascript
+
+Open dev console on: https://wild-pike-clothes.dev.cyclic.app/
+
+And run the following:
+
+```javascript
+fetch('/graphql', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  },
+  body: JSON.stringify({query: "{ hello }"})
+})
+  .then(r => r.json())
+  .then(data => console.log('data returned:', data));
+```
