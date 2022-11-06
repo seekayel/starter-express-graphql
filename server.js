@@ -9,7 +9,7 @@ var app = express();
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
   type Query {
-    rollDice(numDice: Int!, numSides: Int): [Int]
+    getCustomer(email: String!): [Customer]
   }
   type Mutation {
     newCustomer(name: String!, email: String!): [Customer]
@@ -20,6 +20,7 @@ var schema = buildSchema(`
   }
 `);
 
+var fakeDatabase = {};
 
 class Customer {
   constructor(name, email) {
@@ -30,15 +31,13 @@ class Customer {
 
 // The root provides a resolver function for each API endpoint
 var root = {
-  rollDice: ({numDice, numSides}) => {
-    var output = [];
-    for (var i = 0; i < numDice; i++) {
-      output.push(1 + Math.floor(Math.random() * (numSides || 6)));
-    }
-    return output;
+  getCustomer: ({email}) => {
+    return fakeDatabase.email
   },
   newCustomer: ({name,email}) => {
-    return new Customer(name, email);
+    let cust = new Customer(name, email);
+    fakeDatabase.email = cust
+    return cust
   }
 };
 
