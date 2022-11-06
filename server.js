@@ -1,10 +1,21 @@
 var express = require('express');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
-
+const db = require('cyclic-dynamodb')
 
 var app = express();
 
+// Full Listing
+// const items = await db.collection(col).list()
+
+// Single Item
+// const item = await db.collection(col).get(key)
+
+// Delete Item
+// const item = await db.collection(col).delete(key)
+
+// Create Item
+// const item = await db.collection(col).set(key, req.body)
 
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
