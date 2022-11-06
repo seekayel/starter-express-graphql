@@ -2,20 +2,28 @@ var express = require('express');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
 
-// var schema = buildSchema(`
-//   type Query {
-//     hello: String
-//   }
-// `);
 
-// var root = { hello: () => 'Hello world!' };
+var app = express();
+
 
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
   type Query {
     rollDice(numDice: Int!, numSides: Int): [Int]
   }
+  type Customer {
+    name: String!,
+    email: String!
+  }
 `);
+
+
+class Customer {
+  constructor(name, email) {
+    this.name = name
+    this.email = email
+  }
+}
 
 // The root provides a resolver function for each API endpoint
 var root = {
@@ -25,11 +33,13 @@ var root = {
       output.push(1 + Math.floor(Math.random() * (numSides || 6)));
     }
     return output;
+  },
+  newCustomer: ({name,email}) => {
+    return new Customer(name, email);
   }
 };
 
 
-var app = express();
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
