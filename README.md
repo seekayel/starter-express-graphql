@@ -31,9 +31,10 @@ Output:
 ### Via shell
 ```shell
 $ curl -i -X POST \
-     -H "Content-Type: application/json" \
-     -d '{"query": "{ hello }"}' \
-     https://wild-pike-clothes.dev.cyclic.app/graphql
+    -w '\n\nTook: %{time_total}s' \
+    -H "Content-Type: application/json" \
+    -d '{"query": "query {getCustomerById(id: \"31d74c5d1b5081b27c1a\") {id,name,email}}"}' \
+    https://wild-pike-clothes.dev.cyclic.app/graphql
 ```
 
 ```shell

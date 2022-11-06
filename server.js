@@ -79,14 +79,15 @@ query {
 }
 `
 
-
-app.use('/graphql', graphqlHTTP({
+const graphQL = graphqlHTTP({
   schema: schema,
   rootValue: root,
   graphiql: {
     defaultQuery
   },
-}));
+})
+
+app.use('/graphql', graphQL);
 
 app.use('*', (req,res) => {
   res.redirect('/graphql')
