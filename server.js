@@ -11,6 +11,9 @@ var schema = buildSchema(`
   type Query {
     rollDice(numDice: Int!, numSides: Int): [Int]
   }
+  type Mutation {
+    newCustomer(name: String!, email: String!): [Customer]
+  }
   type Customer {
     name: String!,
     email: String!
