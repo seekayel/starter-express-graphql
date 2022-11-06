@@ -1,7 +1,9 @@
 var express = require('express');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
-const db = require('cyclic-dynamodb')
+const CyclicDb = require('cyclic-dynamodb')
+
+const db = CyclicDb("wild-pike-clothesCyclicDB")
 
 var app = express();
 
