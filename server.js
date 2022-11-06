@@ -55,11 +55,37 @@ var root = {
   }
 };
 
+const defaultQuery = `
+# Welcome to the Cyclic GraphQL endpoint backed by DynamoDB
+# Try inserting or querying!
+
+# mutation {
+#   createCustomer(
+#     name: "Kam",
+#     email: "kam.lasater@cyclic.sh"
+#   ) {
+#     id
+#     name
+#     email
+#   }
+# }
+
+query {
+  getCustomerById(id: "31d74c5d1b5081b27c1a") {
+    id
+    name
+    email
+  }
+}
+`
+
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
-  graphiql: true,
+  graphiql: {
+    defaultQuery
+  },
 }));
 
 app.use('*', (req,res) => {
