@@ -9,10 +9,10 @@ var app = express();
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
   type Query {
-    getCustomer(email: String!): [Customer]
+    getCustomer(email: String!): Customer
   }
   type Mutation {
-    newCustomer(name: String!, email: String!): [Customer]
+    createCustomer(name: String!, email: String!): Customer
   }
   type Customer {
     name: String!,
@@ -34,7 +34,7 @@ var root = {
   getCustomer: ({email}) => {
     return fakeDatabase.email
   },
-  newCustomer: ({name,email}) => {
+  createCustomer: ({name,email}) => {
     let cust = new Customer(name, email);
     fakeDatabase.email = cust
     return cust
