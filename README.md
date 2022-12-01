@@ -1,16 +1,18 @@
 # starter-express-graphql
 
-This starter will setup a graphql query endpoint to the Cyclic AWS DynamoDB table.
+This starter will setup a graphql query endpoint backed by a Cyclic app DynamoDB table.
 
 It is adapted from: https://graphql.org/graphql-js/
 
 ## Running
 
-`npm run start` - then open localhost:4000/graphql
+1. `npm install`
+2. `npm run start`
+3. open localhost:4000/graphql
 
 ### UI
 
-Run query with ui:  https://wild-pike-clothes.dev.cyclic.app/graphql
+Run query with ui:  http://localhost:4000/graphql
 
 ```graphql
 {

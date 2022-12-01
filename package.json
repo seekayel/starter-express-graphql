@@ -11,7 +11,7 @@
   "author": "Kam Lasater <kam.lasater@cyclic.sh>",
   "license": "ISC",
   "dependencies": {
-    "cyclic-dynamodb": "^0.0.27",
+    "@cyclic.sh/dynamodb": "^0.0.30",
     "express": "^4.17.3",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0"

@@ -2,7 +2,7 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql')
 const crypto = require('crypto')
-const CyclicDb = require('cyclic-dynamodb')
+const {CyclicDb} = require('@cyclic.sh/dynamodb')
 
 const db = CyclicDb("wild-pike-clothesCyclicDB")
 
