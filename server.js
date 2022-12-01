@@ -2,9 +2,9 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql')
 const crypto = require('crypto')
-const {CyclicDb} = require('@cyclic.sh/dynamodb')
+const CyclicDb = require('@cyclic.sh/dynamodb')
 
-const db = CyclicDb("wild-pike-clothesCyclicDB")
+const db = CyclicDb(process.env.CYCLIC_DB || "CYCLIC_DB env var not defined")
 
 var app = express();
 
